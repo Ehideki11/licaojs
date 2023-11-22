@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Pedra, Papel e Tesoura</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #resultado {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pedra, Papel e Tesoura</h1>
+    <p>Escolha: <select id="escolha">
+            <option value="pedra">Pedra</option>
+            <option value="papel">Papel</option>
+            <option value="tesoura">Tesoura</option>
+        </select>
+    </p>
+    <button onclick="jogar()">Jogar</button>
+    <div id="resultado"></div>
+    <script>
+        function jogar() {
+            const escolhaJogador = document.getElementById("escolha").value;
+            const escolhaComputador = escolherAleatoriamente(["pedra", "papel", "tesoura"]);
+            const resultado = determinarVencedor(escolhaJogador, escolhaComputador);
+            document.getElementById("resultado").innerHTML = `Você escolheu ${escolhaJogador}. O computador escolheu ${escolhaComputador}. Resultado: ${resultado}.`;
+        }
+        function escolherAleatoriamente(opcoes) {
+            return opcoes[Math.floor(Math.random() * opcoes.length)];
+        }
+        function determinarVencedor(jogador, computador) {
+            if (jogador === computador) {
+                return "Empate!";
+            } else if ((jogador === "pedra" && computador === "tesoura") ||
+                       (jogador === "papel" && computador === "pedra") ||
+                       (jogador === "tesoura" && computador === "papel")) {
+                return "Você venceu!";
+            } else {
+                return "Você perdeu!";
+            }
+        }
+    </script>
+</body>
+</html>
