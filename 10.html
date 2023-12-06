@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de RCQ</title>
+    <link href="1.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand">Calculadora Rcq</a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+          </form>
+        </div>
+    </nav>
+    <br>
+    <h1>O que é Rcq?</h1>
+    <p>O Índice de Massa Corporal (IMC) é uma métrica amplamente utilizada para avaliar a composição corporal, mas ele não oferece informações específicas sobre a distribuição de gordura no corpo. É aí que entra o Índice de Relação Cintura-Quadril (RCQ), uma medida que considera a relação entre a circunferência da cintura e a circunferência do quadril.<br><br>O RCQ é calculado dividindo-se a circunferência da cintura pela circunferência do quadril.  Essa relação fornece insights sobre como a gordura está distribuída no corpo, sendo particularmente útil na avaliação do risco de certas condições de saúde associadas à gordura abdominal.</p>
+    <br>
+    <img src="https://static.tuasaude.com/media/article/97/bt/relacao-cintura-quadril_16946_l.jpg" class="rounded mx-auto d-block" alt="...">
+    <br>
+    <h1>Qual a importancia do Rcq?</h1>
+    <p>A distribuição de gordura no corpo é um fator importante a considerar, pois a gordura visceral, que se acumula na região abdominal, tem sido associada a um maior risco de doenças cardiovasculares, diabetes tipo 2 e outras condições metabólicas. Indivíduos com uma maior proporção de gordura na região abdominal em comparação com a região do quadril podem apresentar um RCQ mais elevado.</p>
+    <br>
+    <h1>Como é calculado?</h1>
+    <p>O Índice de Relação Cintura-Quadril (RCQ) é calculado dividindo a circunferência da cintura pela circunferência do quadril. A fórmula é RCQ = Circunferencia da cintura / Circunferencia do quadril.</p>
+    <br>
+    <hr>
+    <br>
+    <h1>Calculadora de RCQ</h1>
+    <label for="cintura">Cintura (cm):</label>
+    <input type="number" id="cintura" placeholder="Informe a medida da cintura">
+    <label for="quadril">Quadril (cm):</label>
+    <input type="number" id="quadril" placeholder="Informe a medida do quadril">
+    <button onclick="calcularRCQ()">Calcular RCQ</button>
+    <div id="result"></div>
+    <script>
+        function calcularRCQ() {
+            var cintura = parseFloat(document.getElementById("cintura").value);
+            var quadril = parseFloat(document.getElementById("quadril").value);
+            var rcq = cintura / quadril;
+            document.getElementById("result").innerHTML = "Seu RCQ é: " + rcq.toFixed(2);
+            if (rcq < 0.90) {
+                document.getElementById("result").className = "normal";
+                document.getElementById("result").innerHTML += " (Normal)";
+            } else if (rcq >= 0.90 && rcq <= 0.99) {
+                document.getElementById("result").className = "sobrepeso";
+                document.getElementById("result").innerHTML += " (Sobrepeso)";
+            } else {
+                document.getElementById("result").className = "obesidade";
+                document.getElementById("result").innerHTML += " (Obesidade)";
+            }
+        }
+    </script>
+</body>
+</html>

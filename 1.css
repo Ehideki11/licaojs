@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+}
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+}
+.normal {
+    color: green;
+}
+.sobrepeso {
+    color: orange;
+}
+.obesidade {
+    color: red;
+}
